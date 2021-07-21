@@ -1,0 +1,2 @@
+def getImageUrlFrom(query):
+    pass

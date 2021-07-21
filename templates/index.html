@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Welcome!</title>
+        <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
+    </head>
+    <body>
+        <h1>Welcome to GifBot!</h1>
+        <p>What kind of gif would you like to see?</p>
+        <form method="post" action="/yourgif">
+            <input type="text" name="gifchoice" placeholder="What kind of gif do you want to see?"/>
+            <input type="submit" value="Submit"/>
+        </form>
+    </body>
+</html>
