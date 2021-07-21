@@ -3,3 +3,10 @@ body {
     margin-top: 30px;
     font-family: 'IBM Plex Sans', sans-serif;
 }
+
+/* css for index */
+
+/* css for results */
+.results-text{
+    text-align: center;
+}

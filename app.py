@@ -8,13 +8,14 @@ import os
 # -- Initialization section --
 app = Flask(__name__)
 
-
+ 
 # -- Routes section --
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html", time = datetime.now())
 
-@app.route("/results")
+@app.route("/results", methods = ["GET", "POST"])
 def results():
+    
     return render_template("results.html")
