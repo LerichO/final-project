@@ -14,3 +14,7 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     return render_template("index.html", time = datetime.now())
+
+@app.route("/results")
+def results():
+    return render_template("results.html")
