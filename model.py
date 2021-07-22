@@ -7,5 +7,13 @@ def search(term, location, api_key ):
           'location': location,
           'limit': 10}
     response = requests.get(search_api_url, headers=headers, params=params, timeout=5).json()
-
-    return response["businesses"][0]["name"]
+    businesses = {
+        "name":[],
+        "location":[]
+    }
+    for x in 10:
+       name = response["businesses"][x]["name"]
+       location = response["businesses"][0]["location"]["city"]
+       businesses["name"].append(name)
+       businesses["location"].append(location)
+    return businesses
