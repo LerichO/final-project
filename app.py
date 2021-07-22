@@ -2,7 +2,7 @@
 # -- Import section --
 from flask import Flask, render_template, request
 from datetime import datetime
-from model import search
+import model
 import os
 
 # -- Initialization section --
@@ -21,6 +21,7 @@ def results():
     api_key = app.config["API_KEY"]
     user_response_city = request.form["city"]
     user_response_service = request.form["service"]
-    message = search(user_response_service, user_response_city, api_key )
-    return render_template("results.html", name = message[0], location = message[1])
+    print(model.search(user_response_service, user_response_city, api_key ))
+    businesses = model.businesses
+    return render_template("results.html", businesses = businesses)
 

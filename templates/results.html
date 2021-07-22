@@ -1,12 +1,22 @@
 <html>
-    <head>
-        <title>Your Personalized Gif</title>
-        <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
-    </head>
-    <body>
-        <h1 class="results-text">Here Your Results</h1>
-        <div id="results-container">
-        <p class="results-text">Shop name</p> <!-- here is where we return the what they searched for -->
-        </div>
-    </body>
+
+<head>
+    <title>Your Personalized Gif</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
+</head>
+
+<body>
+    <h1 class="results-text">Here Your Results</h1>
+    <div id="results-container">
+        res
+        <ul>
+        {% for item in businesses%}
+        <!-- <li>{{ item["name"]}} - {{ item["location"] }}</li>  -->
+        <!-- ^^^^^^^this is to be fixed later tonight/this weekend also - Lerich -->
+        {% endfor %}
+        </ul>
+        <!-- <p class="results-text">{{name}}, {{location}}</p> here is where we return the what they searched for -->
+    </div>
+</body>
+
 </html>
