@@ -19,9 +19,13 @@ def index():
 @app.route("/results", methods = ["GET", "POST"])
 def results():
     api_key = app.config["API_KEY"]
-    user_response_city = request.form["city"]
+    user_response_city = request.form["city-state"]
     user_response_service = request.form["service"]
-    print(model.search(user_response_service, user_response_city, api_key ))
-    businesses = model.businesses
+
+    businesses = model.search(user_response_service, user_response_city, api_key ) 
+    # -- ^^^^^less code used than referencing model.bussiness_list seperately
+    # print(businesses) # enable wehen needed for debugging purposes --
+
+    # -- elements of businesses can now render specific values of keys on html --
     return render_template("results.html", businesses = businesses)
 

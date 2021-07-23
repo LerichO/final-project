@@ -3,19 +3,32 @@
 <head>
     <title>Your Personalized Gif</title>
     <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
     <h1 class="results-text">Here Your Results</h1>
     <div id="results-container">
-        res
+        Results
         <ul>
-        {% for item in businesses%}
-        <!-- <li>{{ item["name"]}} - {{ item["location"] }}</li>  -->
-        <!-- ^^^^^^^this is to be fixed later tonight/this weekend also - Lerich -->
-        {% endfor %}
+            {% for item in businesses%}
+            <!-- <li> -->
+                <!-- {{item.get("name")}} , {{item.get("location").get("address1")}} -->
+                <!-- cards created by for loop -->
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.get("name")}}</h5>-
+                        <h6 class="card-subtitle mb-2 text-muted">{{item.get("location").get("address1")}}</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="card-link">{{item.get("url")}}</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            <!-- </li> -->
+            {% endfor %}
         </ul>
-        <!-- <p class="results-text">{{name}}, {{location}}</p> here is where we return the what they searched for -->
     </div>
 </body>
 
