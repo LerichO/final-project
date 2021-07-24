@@ -2,11 +2,35 @@ body {
     margin: 10%;
     margin-top: 30px;
     font-family: 'IBM Plex Sans', sans-serif;
+
 }
 
 /* css for index */
-
 /* css for results */
 .results-text{
     text-align: center;
+}
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 5%; /* Added */
+     border:3px solid black;
+
+}
+.card-title{
+    text-align: center;
+}
+.card-img-top {
+    /* width: 100% ;  */
+    height: 15vw ;
+    object-fit: cover;
+}
+img{
+    height: auto; 
+    /* border:3px solid black; */
+    margin-bottom: 5%;
+}
+h1{
+    margin-bottom: 5%;
 }

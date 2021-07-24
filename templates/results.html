@@ -2,33 +2,34 @@
 
 <head>
     <title>Your Personalized Gif</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <h1 class="results-text">Here Your Results</h1>
-    <div id="results-container">
-        Results
-        <ul>
+    <h1 class="results-text">Here's The Small Services</h1>
+    <div class="container">
+        <div class="row">
             {% for item in businesses%}
-            <!-- <li> -->
+            <div class="col-md-3">
+                <!-- <li> -->
                 <!-- {{item.get("name")}} , {{item.get("location").get("address1")}} -->
                 <!-- cards created by for loop -->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">{{item.get("name")}}</h5>-
-                        <h6 class="card-subtitle mb-2 text-muted">{{item.get("location").get("address1")}}</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="card-link">{{item.get("url")}}</a>
-                        <a href="#" class="card-link">Another link</a>
+                         <img src="{{item.get('image_url')}}" class="card-img-top" alt="...">
+                        <h5 class="card-title">{{item.get("name")}}</h5>
+                        <h6 class="card-title">{{item.get("location").get("address1")}}, {{item.get("location").get("city")}} </h6>
+
                     </div>
                 </div>
+            </div>
             <!-- </li> -->
             {% endfor %}
-        </ul>
+        </div>
     </div>
 </body>
 

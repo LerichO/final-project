@@ -1,3 +1,4 @@
+
 import requests
 global business_list
 
@@ -10,7 +11,7 @@ def search(term, location, api_key):
     # over the weekend when either of us have time --
     params = {'term': term, 
           'location': location,
-          'limit': 10}
+          'limit': 12}
     response = requests.get(search_api_url, headers=headers, params=params, timeout=5).json()
     business_list = []
     for x in range(params["limit"]): 
