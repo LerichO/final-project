@@ -10,13 +10,9 @@ def search(term, location, api_key):
     # -- We can start adding price range or minimum rating as parameters --
     params = {'term': term, 
           'location': location,
-<<<<<<< HEAD
           'limit': 10}
 
     # -- succesfully sends and renders items on results.html --
-=======
-          'limit': 12}
->>>>>>> e50106fd0845084c59da4e224d15e150dec5d404
     response = requests.get(search_api_url, headers=headers, params=params, timeout=5).json()
     business_list = []
     for x in range(params["limit"]): 
