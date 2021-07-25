@@ -20,3 +20,14 @@ h1{
 .row{
     align-items: center;
 }
+
+.card-img-top{
+    /* position: relative;
+    height: 280px;
+    position: absolute;
+    right: 0;
+    bottom: 0;  */
+
+    height: 280px;
+    object-fit: cover;
+}
