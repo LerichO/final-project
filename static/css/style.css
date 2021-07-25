@@ -2,11 +2,21 @@ body {
     margin: 10%;
     margin-top: 30px;
     font-family: 'IBM Plex Sans', sans-serif;
+    background-color: darkred;
 }
 
-/* css for index */
-
-/* css for results */
-.results-text{
+h1{
     text-align: center;
+}
+
+.container-fluid{
+    background-color: crimson;
+}
+
+/* css for index.html */
+
+/* css for results.html */
+
+.row{
+    align-items: center;
 }
