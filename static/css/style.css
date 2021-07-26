@@ -34,3 +34,6 @@ img{
 h1{
     margin-bottom: 5%;
 }
+#map {
+  height: 100%;
+}

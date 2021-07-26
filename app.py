@@ -7,7 +7,7 @@ import os
 
 # -- Initialization section --
 app = Flask(__name__)
-
+ 
 app.config["API_KEY"] = os.getenv("API_KEY")
 app.config["GMAPS_KEY"] = os.getenv("GMAPS_KEY")
  
