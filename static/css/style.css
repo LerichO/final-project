@@ -2,29 +2,35 @@ body {
     margin: 10%;
     margin-top: 30px;
     font-family: 'IBM Plex Sans', sans-serif;
-
+    background-color: darkred;
 }
 
-/* css for index */
-/* css for results */
-.results-text{
+h1{
     text-align: center;
 }
 
-.card {
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
-    margin-bottom: 5%; /* Added */
-     border:3px solid black;
+.container-fluid{
+    background-color: crimson;
+}
 
+/* css for index.html */
+
+/* css for results.html */
+
+.row{
+    align-items: center;
 }
-.card-title{
-    text-align: center;
-}
-.card-img-top {
-    /* width: 100% ;  */
-    height: 15vw ;
+
+.card-img-top{
+    /* position: relative;
+    height: 280px;
+    position: absolute;
+    right: 0;
+    bottom: 0;  */
+
+    height: 280px;
     object-fit: cover;
+<<<<<<< HEAD
 }
 img{
     height: auto; 
@@ -36,4 +42,6 @@ h1{
 }
 #map {
   height: 100%;
+=======
+>>>>>>> e58127d8a93ff6a31b458c49708e23e80bb4e31f
 }

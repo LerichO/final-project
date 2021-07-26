@@ -11,26 +11,37 @@
 </head> 
 
 <body>
-    <h1 class="results-text">Here's The Small Services</h1>
-    <div class="container">
-        <div class="row">
-            {% for item in businesses%}
-            <div class="col-md-3">
+    <div class="container-fluid">
+        <h1 class="results-text">Here Are Your Results</h1>
+    </div>
+
+    <div id="results-container">
+        Results
+        <ul>
+            <div class="row">
+                {% for item in businesses%}
                 <!-- <li> -->
                 <!-- {{item.get("name")}} , {{item.get("location").get("address1")}} -->
                 <!-- cards created by for loop -->
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                         <img src="{{item.get('image_url')}}" class="card-img-top" alt="...">
-                        <h5 class="card-title">{{item.get("name")}}</h5>
-                        <h6 class="card-title">{{item.get("location").get("address1")}}, {{item.get("location").get("city")}} </h6>
-
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{item.get('image_url')}}" class="card-img-top"> <!-- image can now be displayed on cards -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.get("name")}}</h5>-
+                            <h6 class="card-subtitle mb-2 text-muted">{{item.get("location").get("address1")}}</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                            <a href="#" class="card-link">{{item.get("url")}}</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
                     </div>
                 </div>
+                <!-- </li> -->
+                {% endfor %}
             </div>
-            <!-- </li> -->
-            {% endfor %}
-        </div>
+
+        </ul>
     </div>
     <div id="map"></div>
 
