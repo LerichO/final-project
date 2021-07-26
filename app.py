@@ -9,6 +9,7 @@ import os
 app = Flask(__name__)
 
 app.config["API_KEY"] = os.getenv("API_KEY")
+app.config["GMAPS_KEY"] = os.getenv("GMAPS_KEY")
  
 # -- Routes section --
 @app.route('/')
@@ -19,13 +20,14 @@ def index():
 @app.route("/results", methods = ["GET", "POST"])
 def results():
     api_key = app.config["API_KEY"]
-    user_response_city = request.form["city-state"]
+    gmaps_key = app.config["GMAPS_KEY"]
+    user_response_city = request.form["citystate"]
     user_response_service = request.form["service"]
 
-    businesses = model.search(user_response_service, user_response_city, api_key ) 
+    businesses = model.search(user_response_service, user_response_city, api_key )
     # -- ^^^^^less code used than referencing model.bussiness_list seperately
     # print(businesses) # enable wehen needed for debugging purposes --
 
     # -- elements of businesses can now render specific values of keys on html --
-    return render_template("results.html", businesses = businesses)
+    return render_template("results.html", businesses = businesses, gmaps_key = gmaps_key)
 
