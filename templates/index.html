@@ -29,6 +29,11 @@
       
         <input  type="submit" value="Submit" />
     </form>
+
+    {% if session %}
+            <p>Hi {{session['username']}}</p>
+            <a href = "/logout"> Log Out </a>
+    {% endif %}
 </div>
 </body>
 
