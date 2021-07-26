@@ -5,7 +5,7 @@ from flask_pymongo import PyMongo
 from datetime import datetime
 import model
 import os
-
+ 
 # -- Initialization section --
 app = Flask(__name__)
 

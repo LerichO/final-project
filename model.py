@@ -1,6 +1,6 @@
 
 import requests
-global business_list 
+global business_list  
 
 def search(term, location, api_key):
     global business_list
