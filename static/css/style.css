@@ -30,7 +30,6 @@ h1{
 
     height: 280px;
     object-fit: cover;
-<<<<<<< HEAD
 }
 img{
     height: auto; 
@@ -42,6 +41,4 @@ h1{
 }
 #map {
   height: 100%;
-=======
->>>>>>> e58127d8a93ff6a31b458c49708e23e80bb4e31f
 }
