@@ -11,30 +11,38 @@
 <body>
     <div class="container-fluid">
         <h1>Welcome to Small Services Finder!</h1>
+    <div id ="account" class="row" id="acc-directory">
+        <a class = "account"href="/signup">Sign Up</a>
+        {% if session %}
+            <p >Hi {{session['username']}}</p>
+            <a  href="/logout">Log Out</a>
+            <a  href="/acc">Account</a>
+        {% else %}
+            <a  href="/login">Log In</a>
+            <a  href="/login">Account</a>
+        {% endif %}
+
+        
+    </div>
     </div>
 
     <p>Input your desired service and we'll match you with local establishments based on your preferences</p>
-    <form  method="post" action="/results">
-        <select  name="service" id="cars">
+    <form method="post" action="/results">
+        <select name="service" id="cars">
             <option value="" disabled selected hidden>Select a service type</option>
             <option value="restuarant">Restuarant</option>
             <option value="home-services">Home Services</option>
             <option value="delivery">Delivery</option>
         </select>
-        <input  type="text" name="citystate" placeholder="City, State" />
-        
-        <input  type="text" name="price-range" placeholder="Price Range" />
-        
-        <input  type="text" name="rating-range" placeholder="Minimum Rating" />
-      
-        <input  type="submit" value="Submit" />
+        <input type="text" name="citystate" placeholder="City, State" />
+
+        <input type="text" name="price-range" placeholder="Price Range" />
+
+        <input type="text" name="rating-range" placeholder="Minimum Rating" />
+
+        <input type="submit" value="Submit" />
     </form>
 
-    {% if session %}
-            <p>Hi {{session['username']}}</p>
-            <a href = "/logout"> Log Out </a>
-    {% endif %}
-</div>
 </body>
 
 </html>

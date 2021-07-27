@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, redirect, session
 from flask_pymongo import PyMongo
 from datetime import datetime
 import model
+import math
 import os
  
 # -- Initialization section --
@@ -107,4 +108,28 @@ def results():
     # -- elements of businesses can now render specific values of keys on html --
     # print(cords)
 
-    return render_template("results.html", businesses=businesses, gmapskey = gmapskey, lat = lat, long = long)
+    img_ref = []
+    rating_debug = []
+
+    for business in businesses:
+        rating = float(business["rating"])
+        img_name = "regular_"
+        if rating >= 1:
+            if rating % 1 > 0.25 and rating % 1 <= 0.75:
+                img_name += str(math.trunc(rating))
+                img_name += "_half"
+            elif rating % 1 > 0.75:
+                img_name += str(math.trunc(rating + 1))
+            else:
+                img_name += str(math.trunc(rating))
+            img_name += ".png"
+        else:
+            img_name = "regular_0.png"
+        img_ref.append(img_name)
+        rating_debug.append(rating)
+
+    print(img_ref)
+    print(rating_debug)
+
+    # -- elements of businesses can now render specific values of keys on html --
+    return render_template("results.html", businesses=businesses, gmapskey = gmapskey, stars_img = img_ref, lat = lat, long = long)

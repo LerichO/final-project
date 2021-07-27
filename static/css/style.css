@@ -9,8 +9,30 @@ h1{
     text-align: center;
 }
 
+a:link{
+    text-decoration: none;
+    color: black;
+}
+a:visited{
+    text-decoration: none;
+    color: black;
+}
+
 .container-fluid{
     background-color: crimson;
+    margin-bottom: 2%;
+}
+#account{
+    /* width: 100px;
+    height: auto; */
+    display:inline;
+    position:relative;
+    left:85%;
+}
+#results-account{
+    display:inline;
+    position:relative;
+    left:85%;
 }
 
 /* css for index.html */
@@ -31,6 +53,13 @@ h1{
     height: 280px;
     object-fit: cover;
 }
+
+.yelp-logo{
+    width:100px; /* you can use % */
+    margin: 0px;
+    height: auto;
+}
+
 img{
     height: auto; 
     /* border:3px solid black; */
@@ -41,4 +70,7 @@ h1{
 }
 #map {
   height: 100%;
+}
+.card{
+    margin-bottom: 10%;
 }

@@ -1,8 +1,8 @@
 <html>
 
-<head> 
-    <title>Your Personalized Gif</title>
- 
+<head>
+    <title>Results Page</title>
+
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -12,26 +12,38 @@
 <body>
     <div class="container-fluid">
         <h1 class="results-text">Here Are Your Results</h1>
-
+    <div id = "results-account"class="row" id="acc-directory">
+        <a href="/signup">Sign Up</a>
+        {% if session %}
+        <p>Hi {{session['username']}}</p>
+        <a href="/logout">Log Out</a>
+        <a href="/acc">Account</a>
+        {% else %}
+        <a href="/login">Log In</a>
+        <a href="/login">Account</a>
+        {% endif %}
     </div>
 
+    </div>
+    
     <div id="results-container">
-        Results
         <ul>
             <div class="row">
-                {% for item in businesses%}
-
+                {% for item in range(12) %}
+                <!-- <li> -->
+                <!-- cards created by for loop -->
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{item.get('image_url')}}" class="card-img-top"> <!-- image can now be displayed on cards -->
+                        <img src="{{businesses[item]['image_url']}}" class="card-img-top">
+                        <!-- image can now be displayed on cards -->
                         <div class="card-body">
-                            <h5 class="card-title">{{item.get("name")}}</h5>-
-                            <h6 class="card-subtitle mb-2 text-muted">{{item.get("location").get("address1")}}</h6>
+                            <h5 class="card-title">{{businesses[item].get("name")}}</h5>
+                            <img src = "/static/Yelp-assets/stars/{{stars_img[item]}}">
+                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}}</h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of
                                 the card's content.</p>
-                            <a href="#" class="card-link">{{item.get("url")}}</a>
-                            <a href="#" class="card-link">Another link</a>
+                            <a href='{{businesses[item]["url"]}}'><img src = "/static/Yelp-assets/Logo_RGB.png" class = "yelp-logo"></a>
                         </div>
                     </div>
                 </div>
@@ -67,6 +79,8 @@ function initMap() {
     imagePath:
       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
   });
+
+
 }
 
 const locations = [
