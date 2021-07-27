@@ -29,22 +29,21 @@
         Results
         <ul>
             <div class="row">
-                {% for item in businesses%}
+                {% for item in range(12) %}
                 <!-- <li> -->
-                <!-- {{item.get("name")}} , {{item.get("location").get("address1")}} -->
                 <!-- cards created by for loop -->
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{item.get('image_url')}}" class="card-img-top">
+                        <img src="{{businesses[item]['image_url']}}" class="card-img-top">
                         <!-- image can now be displayed on cards -->
                         <div class="card-body">
-                            <h5 class="card-title">{{item.get("name")}}</h5>-
-                            <h6 class="card-subtitle mb-2 text-muted">{{item.get("location").get("address1")}}</h6>
+                            <h5 class="card-title">{{businesses[item].get("name")}}</h5>
+                            <img src = "/static/Yelp-assets/stars/{{stars_img[item]}}">
+                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}}</h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of
                                 the card's content.</p>
-                            <a href="#" class="card-link">{{item.get("url")}}</a>
-                            <a href="#" class="card-link">Another link</a>
+                            <a href='{{businesses[item]["url"]}}'><img src = "/static/Yelp-assets/Logo_RGB.png" class = "yelp-logo"></a>
                         </div>
                     </div>
                 </div>
