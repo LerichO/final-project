@@ -95,10 +95,16 @@ def results():
     gmapskey = app.config["GMAPS_KEY"]
     user_response_city = request.form["citystate"]
     user_response_service = request.form["service"]
-
     businesses = model.search(user_response_service, user_response_city, api_key)
     # -- ^^^^^less code used than referencing model.bussiness_list seperately
     # print(businesses) # enable wehen needed for debugging purposes --
-
+    lat = []
+    long = []
+    for x in range(12):
+        lat.append(businesses[x]["coordinates"]["latitude"])
+    for x in range(12):
+        long.append(businesses[x]["coordinates"]["longitude"])
     # -- elements of businesses can now render specific values of keys on html --
-    return render_template("results.html", businesses=businesses, gmapskey = gmapskey)
+    # print(cords)
+
+    return render_template("results.html", businesses=businesses, gmapskey = gmapskey, lat = lat, long = long)

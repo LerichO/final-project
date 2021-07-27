@@ -17,6 +17,5 @@ def search(term, location, api_key):
     business_list = []
     for x in range(params["limit"]): 
        business_list.append(response["businesses"][x])
-
     # -- ig monday we can start creating an algorithm that can somewhat identify small businesses --
     return business_list
