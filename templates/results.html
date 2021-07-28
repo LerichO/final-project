@@ -60,7 +60,7 @@
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 13,
-                center: { lat: {{ lat[0]}}, lng: { { long[0] } } },
+                center: { lat: {{ lat[0]}}, lng: {{long[0]}} },
   });
 
         // Create an array of alphabetical characters used to label the markers.
@@ -85,18 +85,19 @@
 }
 
         const locations = [
-            { lat: {{ lat[0]}}, lng: { { long[0] } } },
-        { lat: { { lat[1] } }, lng: { { long[1] } } },
-        { lat: { { lat[2] } }, lng: { { long[2] } } },
-        { lat: { { lat[3] } }, lng: { { long[3] } } },
-        { lat: { { lat[4] } }, lng: { { long[4] } } },
-        { lat: { { lat[5] } }, lng: { { long[5] } } },
-        { lat: { { lat[6] } }, lng: { { long[6] } } },
-        { lat: { { lat[7] } }, lng: { { long[7] } } },
-        { lat: { { lat[8] } }, lng: { { long[8] } } },
-        { lat: { { lat[9] } }, lng: { { long[9] } } },
-        { lat: { { lat[10] } }, lng: { { long[10] } } },
-        { lat: { { lat[11] } }, lng: { { long[11] } } },
+            { lat: {{lat[0]}}, lng: {{long[0]}} },
+            { lat: {{lat[1]}}, lng: {{long[1]}}},
+            { lat: {{lat[2]}}, lng: {{long[2]}}},
+            { lat: {{lat[3]}}, lng: {{long[3]}}},
+            { lat: {{lat[4]}}, lng: {{long[4]}}},
+            { lat: {{lat[5]}}, lng: {{long[5]}}},
+            { lat: {{lat[6]}}, lng: {{long[6]}}},
+            { lat: {{lat[7]}}, lng: {{long[7]}}},
+            { lat: {{lat[8]}}, lng: {{long[8]}}},
+            { lat: {{lat[9]}}, lng: {{long[9]}}},
+            { lat: {{lat[10]}}, lng: {{long[10]}}},
+            { lat: {{lat[11]}}, lng: {{long[11]}}},
+            
 ];
 
 
