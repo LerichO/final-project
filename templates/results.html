@@ -8,7 +8,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
 </head>
-
+ 
 <body>
     <div class="container-fluid">
         <h1 class="results-text">Here Are Your Results</h1>
@@ -60,11 +60,10 @@
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 13,
-                center: { lat: {{ lat[0]}}, lng: { { long[0] } } },
+                center: { lat: {{ lat[0]}}, lng: {{long[0]}} },
   });
 
-        // Create an array of alphabetical characters used to label the markers.
-        const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const locations = JSON.parse(JSON.stringify({{ gmapsLocations|safe}}));
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
         // create an array of markers based on a given "locations" array.
@@ -72,7 +71,6 @@
         const markers = locations.map((location, i) => {
             return new google.maps.Marker({
                 position: location,
-                label: labels[i % labels.length],
             });
         });
         // Add a marker clusterer to manage the markers.
@@ -84,20 +82,8 @@
 
 }
 
-        const locations = [
-            { lat: {{ lat[0]}}, lng: { { long[0] } } },
-        { lat: { { lat[1] } }, lng: { { long[1] } } },
-        { lat: { { lat[2] } }, lng: { { long[2] } } },
-        { lat: { { lat[3] } }, lng: { { long[3] } } },
-        { lat: { { lat[4] } }, lng: { { long[4] } } },
-        { lat: { { lat[5] } }, lng: { { long[5] } } },
-        { lat: { { lat[6] } }, lng: { { long[6] } } },
-        { lat: { { lat[7] } }, lng: { { long[7] } } },
-        { lat: { { lat[8] } }, lng: { { long[8] } } },
-        { lat: { { lat[9] } }, lng: { { long[9] } } },
-        { lat: { { lat[10] } }, lng: { { long[10] } } },
-        { lat: { { lat[11] } }, lng: { { long[11] } } },
-];
+
+
 
 
     </script>

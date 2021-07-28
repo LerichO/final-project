@@ -1,12 +1,12 @@
 # ---- YOUR APP STARTS HERE ----
 # -- Import section --
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, json
 from flask_pymongo import PyMongo
 from datetime import datetime
 import model
 import math
 import os
- 
+  
 # -- Initialization section --
 app = Flask(__name__)
 
@@ -101,10 +101,16 @@ def results():
     # print(businesses) # enable wehen needed for debugging purposes --
     lat = []
     long = []
-    for x in range(12):
+    for x in range(50):
         lat.append(businesses[x]["coordinates"]["latitude"])
-    for x in range(12):
+    for x in range(50):
         long.append(businesses[x]["coordinates"]["longitude"])
+    
+    gmapsLocations = []
+    for x in range(len(model.business_list)):
+        gmapsLocations.append({"lat":businesses[x]["coordinates"]["latitude"],"lng":businesses[x]["coordinates"]["longitude"]})
+    gmapsLocations = json.dumps(gmapsLocations)
+    # print(gmapsLocations)
     # -- elements of businesses can now render specific values of keys on html --
     # print(cords)
 
@@ -132,4 +138,4 @@ def results():
     # print(rating_debug)
 
     # -- elements of businesses can now render specific values of keys on html --
-    return render_template("results.html", businesses=businesses, gmapskey = gmapskey, stars_img = img_ref, lat = lat, long = long)
+    return render_template("results.html", businesses=businesses, gmapskey = gmapskey, stars_img = img_ref, lat = lat, long = long, gmapsLocations = gmapsLocations)
