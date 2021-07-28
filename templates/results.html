@@ -7,29 +7,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
-    <!-- <script src="static/js/results.js"></script> -->
 </head>
 
 <body>
     <div class="container-fluid">
         <h1 class="results-text">Here Are Your Results</h1>
+        <div id="results-account" class="row" id="acc-directory">
+            <a href="/signup">Sign Up</a>
+            {% if session %}
+            <p>Hi {{session['username']}}</p>
+            <a href="/logout">Log Out</a>
+            <a href="/acc">Account</a>
+            {% else %}
+            <a href="/login">Log In</a>
+            <a href="/login">Account</a>
+            {% endif %}
+        </div>
+
     </div>
-    <div class="row" id="acc-directory">
-        <a href="/signup">Sign Up</a>
-        {% if session %}
-        <p>Hi {{session['username']}}</p>
-        <a href="/logout">Log Out</a>
-        <a href="/acc">Account</a>
-        {% else %}
-        <a href="/login">Log In</a>
-        <a href="/login">Account</a>
-        {% endif %}
-    </div>
+
     <div id="results-container">
-        Results
         <ul>
             <div class="row">
-                {% for item in range(12) %}
+                {% for item in range(businesses |length) %}
                 <!-- <li> -->
                 <!-- cards created by for loop -->
                 <div class="col">
@@ -38,12 +38,13 @@
                         <!-- image can now be displayed on cards -->
                         <div class="card-body">
                             <h5 class="card-title">{{businesses[item].get("name")}}</h5>
-                            <img src = "/static/Yelp-assets/stars/{{stars_img[item]}}">
-                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}}</h6>
+                            <img src="/static/Yelp-assets/stars/{{stars_img[item]}}">
+                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}}, {{businesses[item]["location"]["city"]}}, {{businesses[item]["location"]["state"]}}</h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of
                                 the card's content.</p>
-                            <a href='{{businesses[item]["url"]}}'><img src = "/static/Yelp-assets/Logo_RGB.png" class = "yelp-logo"></a>
+                            <a href='{{businesses[item]["url"]}}'><img src="/static/Yelp-assets/Logo_RGB.png"
+                                    class="yelp-logo"></a>
                         </div>
                     </div>
                 </div>
@@ -57,17 +58,50 @@
     <!-- remember to change the key to the one in .env -->
     <script>
         function initMap() {
-            var options = {
-                zoom: 15,
-                center: { lat: 40, lng: -74 },
-            };
-            var map = new google.maps.Map(document.getElementById('map'), options);
-            // var marker = new google.maps.Marker({
-            //   position: { lat: {{ lat }}, lng: {{ long }} },
-            //   map: map,
-            // });
-        }
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: { lat: {{ lat[0]}}, lng: { { long[0] } } },
+  });
+
+        // Create an array of alphabetical characters used to label the markers.
+        const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        const markers = locations.map((location, i) => {
+            return new google.maps.Marker({
+                position: location,
+                label: labels[i % labels.length],
+            });
+        });
+        // Add a marker clusterer to manage the markers.
+        new MarkerClusterer(map, markers, {
+            imagePath:
+                "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+        });
+
+
+}
+
+        const locations = [
+            { lat: {{ lat[0]}}, lng: { { long[0] } } },
+        { lat: { { lat[1] } }, lng: { { long[1] } } },
+        { lat: { { lat[2] } }, lng: { { long[2] } } },
+        { lat: { { lat[3] } }, lng: { { long[3] } } },
+        { lat: { { lat[4] } }, lng: { { long[4] } } },
+        { lat: { { lat[5] } }, lng: { { long[5] } } },
+        { lat: { { lat[6] } }, lng: { { long[6] } } },
+        { lat: { { lat[7] } }, lng: { { long[7] } } },
+        { lat: { { lat[8] } }, lng: { { long[8] } } },
+        { lat: { { lat[9] } }, lng: { { long[9] } } },
+        { lat: { { lat[10] } }, lng: { { long[10] } } },
+        { lat: { { lat[11] } }, lng: { { long[11] } } },
+];
+
+
     </script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{gmapskey}}&callback=initMap&libraries=&v=weekly" async>
     </script>
 </body>
