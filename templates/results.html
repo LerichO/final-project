@@ -1,4 +1,4 @@
-<html>
+<html id="results-html">
 
 <head>
     <title>Results Page</title>
@@ -10,21 +10,23 @@
 </head>
 
 <body id="results-body">
-    <div class="container-fluid">
-        <h1 class="results-text">Here Are Your Results</h1>
+    <div id="results-container">
+        <div id="results-header">
+            <h1 class="results-text">Here Are Your Results</h1>
+        </div>
         <div id="results-account" class="row" id="acc-directory">
-            <a href="/signup">Sign Up</a>
+            <a class="account-text" href="/signup">Sign Up</a>
             {% if session %}
-            <p>Hi {{session['username']}}</p>
-            <a href="/logout">Log Out</a>
-            <a href="/acc">Account</a>
+            <p class="account-text">Hi {{session['username']}}</p>
+            <a class="account-text" href="/logout">Log Out</a>
+            <a class="account-text" href="/acc">Account</a>
             {% else %}
-            <a href="/login">Log In</a>
-            <a href="/login">Account</a>
+            <a class="account-text" href="/login">Log In</a>
+            <a class="account-text" href="/login">Account</a>
             {% endif %}
         </div>
-
     </div>
+
     <div>
         <ul>
             <div class="row">
@@ -33,12 +35,13 @@
                 <!-- cards created by for loop -->
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <a href='{{businesses[item]["url"]}}'><img src="{{businesses[item]['image_url']}}" class="card-img-top"></a>
+                        <img src="{{businesses[item]['image_url']}}" class="card-img-top">
                         <!-- image can now be displayed on cards -->
                         <div class="card-body">
                             <h5 class="card-title">{{businesses[item].get("name")}}</h5>
-                            <img src="/static/Yelp-assets/stars/{{stars_img[item]}}">
-                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}}, {{businesses[item]["location"]["city"]}}, {{businesses[item]["location"]["state"]}}</h6>
+                            <img class="yelp-img" src="/static/Yelp-assets/stars/{{stars_img[item]}}">
+                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}},
+                                {{businesses[item]["location"]["city"]}}, {{businesses[item]["location"]["state"]}}</h6>
                             <p class="card-text">Review count: {{businesses[item]["review_count"]}}</p>
                             <a href='{{businesses[item]["url"]}}'><img src="/static/Yelp-assets/Logo_RGB.png"
                                     class="yelp-logo"></a>
@@ -57,14 +60,14 @@
 
     <!-- remember to change the key to the one in .env -->
     <script>
-        const center = { lat: {{lat}}, lng: {{lng}}};
+        const center = { lat: {{ lat }}, lng: {{ lng }}};
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 13,
                 center: center,
             });
 
-        const locations = JSON.parse(JSON.stringify({{ gmapsLocations| safe}}));
+            const locations = JSON.parse(JSON.stringify({{ gmapsLocations| safe}}));
 
         for (i = 0; i < locations.length; i++) {
             position = locations[i]
@@ -72,18 +75,19 @@
                 position: position,
                 map,
             });
-        const name = JSON.parse(JSON.stringify({{ businesses_names| safe}}));
+            const name = JSON.parse(JSON.stringify({{ businesses_names| safe}}));
         const images = JSON.parse(JSON.stringify({{ businesses_images| safe}}));
         const address = JSON.parse(JSON.stringify({{ businesses_address| safe}}));
-        const contentString = "<h3>"+name[i]+"</h3>"+"<br>"+"<img src="+images[i]+">"+"<br>"+"<p>"+address[i]+"</p>";
+
+        const contentString = "<h3  class ="+ "map-text"+">" + name[i] + "</h3>" + "<br>" + "<img src=" + images[i] + " class = " + "map-img" + " >" + "<br>" + "<h5 class ="+ "map-text"+">" + address[i] + "</h5>";
         const infowindow = new google.maps.InfoWindow({
             content: contentString,
         });
-            google.maps.event.addListener(marker, 'click', (function (marker, infowindow) {
-                return function () {
-                    infowindow.open(map, marker);
-                };
-            })(marker, infowindow));
+        google.maps.event.addListener(marker, 'click', (function (marker, infowindow) {
+            return function () {
+                infowindow.open(map, marker);
+            };
+        })(marker, infowindow));
 
         }
 
