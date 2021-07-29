@@ -9,12 +9,12 @@
     <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
 </head>
 
-<body id="results-body">
+<body id="results-body" style="background-color: white;">
     <div id="results-container">
         <div id="results-header">
             <h1 class="results-text">Here Are Your Results</h1>
         </div>
-        <div id="results-account" class="row" id="acc-directory">
+        <div id="results-account" class="row" id="acc-directory" style="top: -70px;">
             <a class="account-text" href="/signup">Sign Up</a>
             {% if session %}
             <p class="account-text">Hi {{session['username']}}</p>
@@ -37,13 +37,13 @@
                     <div class="card" style="width: 18rem;">
                         <img src="{{businesses[item]['image_url']}}" class="card-img-top">
                         <!-- image can now be displayed on cards -->
-                        <div class="card-body">
-                            <h5 class="card-title">{{businesses[item].get("name")}}</h5>
+                        <div class="card-body" style="background-color: crimson; color: white;">
+                            <h5 class="card-title" style="text-align: center;">{{businesses[item].get("name")}}</h5>
                             <img class="yelp-img" src="/static/Yelp-assets/stars/{{stars_img[item]}}">
-                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}},
+                            <h6 class="card-subtitle mb-2">{{businesses[item]["location"]["address1"]}},
                                 {{businesses[item]["location"]["city"]}}, {{businesses[item]["location"]["state"]}}</h6>
                             <p class="card-text">Review count: {{businesses[item]["review_count"]}}</p>
-                            <a href='{{businesses[item]["url"]}}'><img src="/static/Yelp-assets/Logo_RGB.png"
+                            <a href='{{businesses[item]["url"]}}' style="border: 2px black solid;"><img src="/static/Yelp-assets/Logo_RGB.png"
                                     class="yelp-logo"></a>
                         </div>
                     </div>
