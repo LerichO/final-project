@@ -25,26 +25,28 @@
 
         
     </div>
+    <p>Powered by Yelp</p>
     </div>
 
-    <h3>Input your desired service and we'll match you with local establishments based on your preferences</h3>
+    <h3 style="text-align: center; margin-bottom: 20px; ">Input your desired service and we'll match you with local establishments based on your preferences</h3>
     <form method="post" action="/results">
     <div id="search">
+        <div id="search-options" style="margin-bottom: 10px;">
+        <input class = "searches"type="text" name="citystate" placeholder="City, State" />
+        <input class = "searches"type="text" name="rating-range" placeholder="Minimum Rating" />
+        </div>
+        <br>
         <select id="dropdown"name="service" id="cars">
             <option value="" disabled selected hidden>Select a service type</option>
             <option value="restuarant">Restaurant</option>
             <option value="home-services">Home Services</option>
             <option value="delivery">Delivery</option>
         </select>
-        <div id="search-options">
-        <input class = "searches"type="text" name="citystate" placeholder="City, State" />
-        <input class = "searches"type="text" name="rating-range" placeholder="Minimum Rating" />
-        </div>
     </div>
 
         <!-- <input type="text" name="price-range" placeholder="Price Range" /> -->
     <div id = "submit-div">
-        <input id ="submit"type="submit" value="Submit" />
+        <input id ="submit"type="submit" value="Submit" style="margin-top: 20px;" />
         </div>
     </form>
 
