@@ -103,20 +103,34 @@ def results():
     businesses = model.search(user_response_service, user_response_city, api_key)
     # -- ^^^^^less code used than referencing model.bussiness_list seperately
     # print(businesses) # enable wehen needed for debugging purposes --
-    lat = []
-    long = []
-    for x in range(len(businesses)):
-        lat.append(businesses[x]["coordinates"]["latitude"])
-    for x in range(len(businesses)):
-        long.append(businesses[x]["coordinates"]["longitude"])
+    # lat = []
+    # long = []
+    # for x in range(len(businesses)):
+    #     lat.append(businesses[x]["coordinates"]["latitude"])
+    # for x in range(len(businesses)):
+    #     long.append(businesses[x]["coordinates"]["longitude"])
+    lat = businesses[1]["coordinates"]["latitude"]
+    lng = businesses[1]["coordinates"]["longitude"]
     
     gmapsLocations = []
     for x in range(len(model.business_list)):
         gmapsLocations.append({"lat":businesses[x]["coordinates"]["latitude"],"lng":businesses[x]["coordinates"]["longitude"]})
     gmapsLocations = json.dumps(gmapsLocations)
-    # print(gmapsLocations)
-    # -- elements of businesses can now render specific values of keys on html --
-    # print(cords)
+    businesses_names = []
+    for x in range(len(model.business_list)):
+        businesses_names.append(businesses[x]["name"])
+    businesses_names = json.dumps( businesses_names)
+
+    businesses_address = []
+    for x in range(len(model.business_list)):
+        businesses_address.append(businesses[x]["location"]["display_address"])
+    businesses_address = json.dumps( businesses_address)
+    
+    businesses_images = []
+    for x in range(len(model.business_list)):
+        businesses_images.append(businesses[x]["image_url"])
+    businesses_images = json.dumps( businesses_images)
+        # -- elements of businesses can now render specific values of keys on html --
 
     img_ref = []
     rating_debug = []
@@ -142,4 +156,4 @@ def results():
     # print(rating_debug)
 
     # -- elements of businesses can now render specific values of keys on html --
-    return render_template("results.html", businesses=businesses, gmapskey = gmapskey, stars_img = img_ref, lat = lat, long = long, gmapsLocations = gmapsLocations)
+    return render_template("results.html", businesses=businesses, gmapskey = gmapskey, stars_img = img_ref, lat = lat, lng = lng, gmapsLocations = gmapsLocations, businesses_names = businesses_names, businesses_address= businesses_address, businesses_images = businesses_images)
