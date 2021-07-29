@@ -104,7 +104,7 @@ def small_business_sort(api_url, headers, location, b_list):
 
     print ("The list printed sorting by age in descending order: ")
     for i in range(len(processed)):
-        print(str(processed[i]["score"]) + " : " + str(processed[i]["business"]["name"])) # -- for debugging --
+        # print(str(processed[i]["score"]) + " : " + str(processed[i]["business"]["name"])) # -- for debugging --
         if processed[i]["score"] > processed[int(len(processed) / 2) - 1]["score"]:
             export.append(processed[i]["business"])
     
