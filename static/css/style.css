@@ -132,7 +132,6 @@ h1{
     width: 20%;
     text-align: center;
 }
-<<<<<<< HEAD
 
 .loader {
   border: 16px solid #f3f3f3;
@@ -154,5 +153,3 @@ h1{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-=======
->>>>>>> 171de6d6b51834adef864a6ec3d0d928964446e9
