@@ -4,6 +4,10 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     background-color: crimson;
 }
+#results-body{
+    background-color: crimson;
+
+}
 
 h1{
     text-align: center;
@@ -58,8 +62,12 @@ h1{
     margin-bottom: 5%;
 }
 #map {
-  height: 100%;
+    height: 100%;
+    margin-bottom: 5%;
+    left: 10%;
+    width: 80%;
 }
+
 .card{
     margin-bottom: 10%;
 }
@@ -124,4 +132,3 @@ h1{
     width: 20%;
     text-align: center;
 }
-

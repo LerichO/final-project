@@ -8,8 +8,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
 </head>
- 
-<body>
+
+<body id="results-body">
     <div class="container-fluid">
         <h1 class="results-text">Here Are Your Results</h1>
         <div id="results-account" class="row" id="acc-directory">
@@ -25,8 +25,7 @@
         </div>
 
     </div>
-
-    <div id="results-container">
+    <div>
         <ul>
             <div class="row">
                 {% for item in range(businesses |length) %}
@@ -39,7 +38,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{businesses[item].get("name")}}</h5>
                             <img src="/static/Yelp-assets/stars/{{stars_img[item]}}">
-                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}}, {{businesses[item]["location"]["city"]}}, {{businesses[item]["location"]["state"]}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{businesses[item]["location"]["address1"]}},
+                                {{businesses[item]["location"]["city"]}}, {{businesses[item]["location"]["state"]}}</h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of
                                 the card's content.</p>
@@ -54,31 +54,41 @@
 
         </ul>
     </div>
-    <div id="map"></div>
+    <div id="maps-container">
+        <div id="map"></div>
+    </div>
+
     <!-- remember to change the key to the one in .env -->
     <script>
+        const center = { lat: {{lat}}, lng: {{lng}}};
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 13,
-                center: { lat: {{ lat[0]}}, lng: {{long[0]}} },
-  });
-
-        const locations = JSON.parse(JSON.stringify({{ gmapsLocations|safe}}));
-        // Add some markers to the map.
-        // Note: The code uses the JavaScript Array.prototype.map() method to
-        // create an array of markers based on a given "locations" array.
-        // The map() method here has nothing to do with the Google Maps API.
-        const markers = locations.map((location, i) => {
-            return new google.maps.Marker({
-                position: location,
+                center: center,
             });
-        });
-        // Add a marker clusterer to manage the markers.
-        new MarkerClusterer(map, markers, {
-            imagePath:
-                "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-        });
 
+        const locations = JSON.parse(JSON.stringify({{ gmapsLocations| safe}}));
+
+        for (i = 0; i < locations.length; i++) {
+            position = locations[i]
+            const marker = new google.maps.Marker({
+                position: position,
+                map,
+            });
+        const name = JSON.parse(JSON.stringify({{ businesses_names| safe}}));
+        const images = JSON.parse(JSON.stringify({{ businesses_images| safe}}));
+        const address = JSON.parse(JSON.stringify({{ businesses_address| safe}}));
+        const contentString = "<h3>"+name[i]+"</h3>"+"<br>"+"<img src="+images[i]+">"+"<br>"+"<p>"+address[i]+"</p>";
+        const infowindow = new google.maps.InfoWindow({
+            content: contentString,
+        });
+            google.maps.event.addListener(marker, 'click', (function (marker, infowindow) {
+                return function () {
+                    infowindow.open(map, marker);
+                };
+            })(marker, infowindow));
+
+        }
 
 }
 
