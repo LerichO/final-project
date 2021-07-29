@@ -82,6 +82,10 @@ def login():
             session["username"] = request.form["user_name"]
             return render_template("index.html")
 
+@app.route("/acc")
+def account():
+    return render_template("account.html")
+
 
 @app.route("/logout")
 def logout():
@@ -101,9 +105,9 @@ def results():
     # print(businesses) # enable wehen needed for debugging purposes --
     lat = []
     long = []
-    for x in range(50):
+    for x in range(len(businesses)):
         lat.append(businesses[x]["coordinates"]["latitude"])
-    for x in range(50):
+    for x in range(len(businesses)):
         long.append(businesses[x]["coordinates"]["longitude"])
     
     gmapsLocations = []
