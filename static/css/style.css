@@ -1,18 +1,14 @@
+/* for all of the htmls */
 body {
     margin: 10%;
-    margin-top: 30px;
     font-family: 'IBM Plex Sans', sans-serif;
     background-color: crimson;
-}
-#results-body{
-    background-color: crimson;
-
-}
-
+} 
 h1{
     text-align: center;
-}
+    margin-bottom: 5%;
 
+}
 a:link{
     text-decoration: none;
     color: white;
@@ -21,56 +17,12 @@ a:visited{
     text-decoration: none;
     color: white;
 }
-
 .container-fluid{
     color: white;
     background-color: darkred;
     margin-bottom: 2%;
 }
-#account{
-    display:inline;
-    position:relative;
-    left:85%;
-}
-#results-account{
-    display:inline;
-    position:relative;
-    left:80%;
-}
 
-
-.row{
-    align-items: center;
-}
-
-.card-img-top{
-    height: 280px;
-    object-fit: cover;
-}
-
-.yelp-logo{
-    width:100px; 
-    margin: 0px;
-    height: auto;
-}
-
-img{
-    height: auto; 
-    margin-bottom: 5%;
-}
-h1{
-    margin-bottom: 5%;
-}
-#map {
-    height: 100%;
-    margin-bottom: 5%;
-    left: 10%;
-    width: 80%;
-}
-
-.card{
-    margin-bottom: 10%;
-}
 .searches{
     background-color: white;
     background-position: 10px 10px;
@@ -79,14 +31,6 @@ h1{
     width: 40%;
     text-align: center;
     font-size: 150%;
-
-}
-#dropdown{
-    padding: 16px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-
 }
 #search{
     margin: auto;
@@ -111,9 +55,71 @@ h1{
   margin: 4px 2px;
   cursor: pointer;
 }
+/* for results */
+#results-body{
+    background-color: crimson;
+
+}
+#results-container{
+    color: white;
+    background-color: darkred;
+    position: relative;
+    top: -100px; 
+}
+.account-text{
+width: 30px;
+margin: none;
+}
+.row{
+    align-items: center;
+}
+.card-img-top{
+    height: 280px;
+    object-fit: cover;
+}
+.yelp-logo{
+    width:100px; 
+    margin: 0px;
+    height: auto;
+}
+.yelp-img{
+    height: auto; 
+    margin-bottom: 5%;
+}
+#map {
+    height: 100%;
+    margin-bottom: 5%;
+    left: 10%;
+    width: 80%;
+}
+.map-img{
+    left: 30%;
+    width: 200px;
+    height: 200px;
+}
+.map-text{
+    color: black;
+    text-align: center;
+}
+.card{
+    margin-bottom: 10%;
+}
+#dropdown{
+    padding: 16px 20px;
+    border:5x black solid ;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+
+}
 .results-text{
     margin: none;
 }
+#results-account{
+    display:inline;
+    position:relative;
+    left:80%;
+}
+/* for account pages */
 .account-pages{
     margin: auto;
     text-align: center;
@@ -132,6 +138,13 @@ h1{
     width: 20%;
     text-align: center;
 }
+#account{
+    display:inline;
+    position:relative;
+    left:85%;
+}
+
+
 
 .loader {
   border: 16px solid #f3f3f3;
