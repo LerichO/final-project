@@ -138,70 +138,69 @@ def logout():
 
 @app.route("/results", methods=["GET", "POST"])
 def results():
-    if request.method == "GET":
-        global businesses
-        global final_list
-        api_key = app.config["YELP_API_KEY"]
-        gmapskey = app.config["GMAPS_KEY"]
-        user_response_city = request.form["citystate"]
-        user_response_service = request.form["service"]
-        businesses = model.search(user_response_service,
-                                  user_response_city, api_key)
-        final_list = businesses
-        # -- ^^^^^less code used than referencing model.bussiness_list seperately
-        # print(businesses) # enable wehen needed for debugging purposes --
-        # lat = []
-        # long = []
-        # for x in range(len(businesses)):
-        #     lat.append(businesses[x]["coordinates"]["latitude"])
-        # for x in range(len(businesses)):
-        #     long.append(businesses[x]["coordinates"]["longitude"])
-        lat = businesses[1]["coordinates"]["latitude"]
-        lng = businesses[1]["coordinates"]["longitude"]
+    global businesses
+    global final_list
+    api_key = app.config["YELP_API_KEY"]
+    gmapskey = app.config["GMAPS_KEY"]
+    user_response_city = request.form["citystate"]
+    user_response_service = request.form["service"]
+    businesses = model.search(user_response_service,
+                              user_response_city, api_key)
+    final_list = businesses
+    # -- ^^^^^less code used than referencing model.bussiness_list seperately
+    # print(businesses) # enable wehen needed for debugging purposes --
+    # lat = []
+    # long = []
+    # for x in range(len(businesses)):
+    #     lat.append(businesses[x]["coordinates"]["latitude"])
+    # for x in range(len(businesses)):
+    #     long.append(businesses[x]["coordinates"]["longitude"])
+    lat = businesses[1]["coordinates"]["latitude"]
+    lng = businesses[1]["coordinates"]["longitude"]
 
-        gmapsLocations = []
-        for x in range(len(model.business_list)):
-            gmapsLocations.append(
-                {"lat": businesses[x]["coordinates"]["latitude"], "lng": businesses[x]["coordinates"]["longitude"]})
-        gmapsLocations = json.dumps(gmapsLocations)
-        businesses_names = []
-        for x in range(len(model.business_list)):
-            businesses_names.append(businesses[x]["name"])
-        businesses_names = json.dumps(businesses_names)
+    gmapsLocations = []
+    for x in range(len(model.business_list)):
+        gmapsLocations.append(
+            {"lat": businesses[x]["coordinates"]["latitude"], "lng": businesses[x]["coordinates"]["longitude"]})
+    gmapsLocations = json.dumps(gmapsLocations)
+    businesses_names = []
+    for x in range(len(model.business_list)):
+        businesses_names.append(businesses[x]["name"])
+    businesses_names = json.dumps(businesses_names)
 
-        businesses_address = []
-        for x in range(len(model.business_list)):
-            businesses_address.append(businesses[x]["location"]["display_address"])
-        businesses_address = json.dumps(businesses_address)
+    businesses_address = []
+    for x in range(len(model.business_list)):
+        businesses_address.append(businesses[x]["location"]["display_address"])
+    businesses_address = json.dumps(businesses_address)
 
-        businesses_images = []
-        for x in range(len(model.business_list)):
-            businesses_images.append(businesses[x]["image_url"])
-        businesses_images = json.dumps(businesses_images)
-        # -- elements of businesses can now render specific values of keys on html --
+    businesses_images = []
+    for x in range(len(model.business_list)):
+        businesses_images.append(businesses[x]["image_url"])
+    businesses_images = json.dumps(businesses_images)
+    # -- elements of businesses can now render specific values of keys on html --
 
-        img_ref = []
-        rating_debug = []
+    img_ref = []
+    rating_debug = []
 
-        for business in businesses:
-            rating = float(business["rating"])
-            img_name = "regular_"
-            if rating >= 1:
-                if rating % 1 > 0.25 and rating % 1 <= 0.75:
-                    img_name += str(math.trunc(rating))
-                    img_name += "_half"
-                elif rating % 1 > 0.75:
-                    img_name += str(math.trunc(rating + 1))
-                else:
-                    img_name += str(math.trunc(rating))
-                img_name += ".png"
+    for business in businesses:
+        rating = float(business["rating"])
+        img_name = "regular_"
+        if rating >= 1:
+            if rating % 1 > 0.25 and rating % 1 <= 0.75:
+                img_name += str(math.trunc(rating))
+                img_name += "_half"
+            elif rating % 1 > 0.75:
+                img_name += str(math.trunc(rating + 1))
             else:
-                img_name = "regular_0.png"
-            img_ref.append(img_name)
-            rating_debug.append(rating)
+                img_name += str(math.trunc(rating))
+            img_name += ".png"
+        else:
+            img_name = "regular_0.png"
+        img_ref.append(img_name)
+        rating_debug.append(rating)
 
-        # print(img_ref)
-        # print(rating_debug)
+    # print(img_ref)
+    # print(rating_debug)
 
-        # -- elements of businesses can now render specific values of keys on html --
-        return render_template("results.html", businesses=businesses, gmapskey=gmapskey, stars_img=img_ref, lat=lat, lng=lng, gmapsLocations=gmapsLocations, businesses_names=businesses_names, businesses_address=businesses_address, businesses_images=businesses_images)
+    # -- elements of businesses can now render specific values of keys on html --
+    return render_template("results.html", businesses=businesses, gmapskey=gmapskey, stars_img=img_ref, lat=lat, lng=lng, gmapsLocations=gmapsLocations, businesses_names=businesses_names, businesses_address=businesses_address, businesses_images=businesses_images)
