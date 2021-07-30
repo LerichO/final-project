@@ -43,10 +43,10 @@
                             <h6 class="card-subtitle mb-2">{{businesses[item]["location"]["address1"]}},
                                 {{businesses[item]["location"]["city"]}}, {{businesses[item]["location"]["state"]}}</h6>
                             <p class="card-text">Review count: {{businesses[item]["review_count"]}}</p>
-                            <a href='{{businesses[item]["url"]}}' style="border: 2px black solid;"><img src="/static/Yelp-assets/Logo_RGB.png"
-                                    class="yelp-logo"></a>
+                            <a href='{{businesses[item]["url"]}}'><img src="/static/Yelp-assets/Logo_RGB.png"
+                                    class="yelp-logo" style="background-color: #b31b1b;"></a>
                             {% if session %}
-                            <a href="/save/{{businesses[item]['id']}}">Save for Later</a>
+                            <a href="/save/{{businesses[item]['id']}}" style="background-color: #b31b1b;">Save for Later</a>
                             {% else %}
                             <a href='/login'>Save for Later</a>
                             {% endif %}
