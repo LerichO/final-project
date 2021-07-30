@@ -146,8 +146,12 @@ def results():
     user_response_city = request.form["citystate"]
     user_response_service = request.form["service"]
     user_response_rating = float(request.form["rating-range"])
-    businesses = model.search(user_response_service,
-                              user_response_city, user_response_rating, api_key)
+    if type(user_response_city) == str:
+        businesses = model.search(user_response_service,user_response_city, user_response_rating, api_key)
+    else:
+        error = "One of your inputs is wrong"
+        return render_template("index.html", error = error, time=datetime.now())
+
     final_list = businesses
     # -- ^^^^^less code used than referencing model.bussiness_list seperately
     # print(businesses) # enable wehen needed for debugging purposes --

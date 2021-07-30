@@ -152,6 +152,10 @@ background-color: white;
     color: #b31b1b;
 
 }
+.account-a:link{
+    color: #b31b1b;
+
+}
 .account-pages{
     margin: auto;
     text-align: center;
@@ -173,7 +177,7 @@ background-color: white;
 #account{
     display:inline;
     position:relative;
-    left:45%;
+    /* left:45%; */
 }
 .account-button-div{
     text-align: center;

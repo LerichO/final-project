@@ -11,20 +11,21 @@
   
 <body>
     <div class="container-fluid">
-        <h1>Welcome to Small Services Finder!</h1>
     <div id ="account" class="row" id="acc-directory">
+    <div class="col" style="display: inline;" >
+    <a style="font-size: 50px;margin-left: 40px;">Welcome to Small Services Finder!</a>
+    <a><img style = "width: auto; height: 70px; margin-left: 20px;"src="/static/small-services-finder-logo-white.png"></a>
+
         {% if session %}
-            <a>Hi: {{session['username']}}</a>
-            <a  href="/logout">Log Out</a>
-            <a  href="/account">Account</a>
+            <a style=" margin-right:5px; font-size: 25px;margin-left: 100px;">Hi: {{session['username']}}</a>
+            <a style=" margin-right:5px; font-size: 25px;margin-left: 40px;" href="/logout">Log Out</a>
+            <a  style=" margin-right:5px;font-size: 25px;margin-left: 40px;"href="/account">Account</a>
         {% else %}
-            <a class = "account"href="/signup">Sign Up</a>
-            <a  href="/login">Log In</a>
-            <a  href="/login">Account</a>
-        {% endif %}
-
-
-        
+            <a style=" margin-right:5px;font-size: 25px;margin-left: 100px;"class = "account"href="/signup">Sign Up</a>
+            <a style=" margin-right:5px;font-size: 25px;margin-left: 40px;" href="/login">Log In</a>
+            <a style=" margin-right:5px;font-size: 25px;margin-left: 40px;" href="/login">Account</a>
+        {% endif %}  
+    </div>
     </div>
     <p>Powered by Yelp</p>
     </div>
@@ -32,9 +33,11 @@
     <h3 style="text-align: center; margin-bottom: 20px; ">Input your desired service and we'll match you with local establishments based on your preferences</h3>
     <form method="post" action="/results">
     <div id="search">
-        <div id="search-options" style="margin-bottom: 10px;">
+        <div class="row">
+        <div class="col">
         <input class = "searches"type="text" name="citystate" placeholder="City, State" />
-        <input class = "searches"type="text" name="rating-range" placeholder="Minimum Rating" />
+        <input class = "searches"type="text" name="rating-range" placeholder="Minimum Rating (1-5)" />
+        </div>
         </div>
         <br>
         <select id="dropdown"name="service" id="cars">
@@ -48,7 +51,7 @@
         <!-- <input type="text" name="price-range" placeholder="Price Range" /> -->
     <div id = "submit-div">
         <input id ="submit"type="submit" value="Submit" style="margin-top: 20px;" />
-        </div>
+    </div>
     </form>
     <h2 style="text-align: center; margin-top: 5%;">Mission Statement</h2>
     <h3 style="text-align: center; width: 70%; margin: auto;">We saw it as essential to give smaller businesses the engagement needed to grow in our modern markets. Due to Covid 19 pandemic,
