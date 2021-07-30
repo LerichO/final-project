@@ -49,7 +49,7 @@ def signup():
             users.insert(user)
             # tell the browser session who the user is
             session["username"] = request.form["user_name"]
-            return "user has been created"
+            return redirect("/")
         else:
             return "That username is taken"
 
@@ -71,7 +71,8 @@ def login():
         exisiting_user = users.find_one({"username": user["username"]})
         # condition for if user exists
         if exisiting_user is None:
-            return "That username does not exist, try signing up an account instead."
+            error = "Username or Password is incorrect, try making a new account if this is your first time here :)"
+            return render_template('login.html', error=error)
         else:
             error = ""
             # check if passwords match
@@ -79,7 +80,7 @@ def login():
                 session['username'] = user['username']
                 return redirect("/")
             else:
-                error = "That's not the correct password"
+                error = "Username or Password is incorrect, try making a new account if this is your first time here :)"
                 return render_template('login.html', error=error)
             session["username"] = request.form["user_name"]
             return render_template("index.html")

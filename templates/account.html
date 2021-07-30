@@ -3,6 +3,7 @@
 
 <head>
     <title>Saved Services</title>
+    
     <link rel="icon" type="image/png" href="/static/small-services-finder-logo-favicon.png"/>
     <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,37 +17,34 @@
         <div id="saves-account" class="row" id="acc-directory">
             <a href="/">Return to Main Page</a>
         </div>
-        <div>
+    </div>
+    <div>
             <ul>
                 <div class="row">
                     {% for item in range(saves |length) %}
                     <!-- <li> -->
                     <!-- cards created by for loop -->
                     <div class="col">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 18rem; border: 5px black solid; margin-bottom: 10%;">
                             <a href='{{saves[item]["url"]}}'><img src="{{saves[item]['image_url']}}"
                                     class="card-img-top"></a>
                             <!-- image can now be displayed on cards -->
-                            <div class="card-body">
-                                <h5 class="card-title">{{saves[item]["name"]}}</h5>
-                                
-                                <h6 class="card-subtitle mb-2 text-muted">{{saves[item]["location"]["address1"]}},
+                            <div class="card-body" style="background-color: crimson; color: white;">
+                                <h5 class="card-title" style="text-align: center;">{{saves[item]["name"]}}</h5>
+                                <h6 class="card-subtitle mb-2">{{saves[item]["location"]["address1"]}},
                                     {{saves[item]["location"]["city"]}}, {{saves[item]["location"]["state"]}}
                                 </h6>
                                 <p class="card-text">Review count: {{saves[item]["review_count"]}}</p>
                                 <a href='{{saves[item]["url"]}}'><img src="/static/Yelp-assets/Logo_RGB.png"
-                                        class="yelp-logo"></a>
+                                        class="yelp-logo" style="background-color: #b31b1b;"></a>
                             </div>
                         </div>
                     </div>
                     <!-- </li> -->
                     {% endfor %}
                 </div>
-
             </ul>
         </div>
-
-    </div>
 
     <div class="loader"></div>
 
