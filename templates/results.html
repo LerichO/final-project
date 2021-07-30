@@ -35,7 +35,8 @@
                 <!-- cards created by for loop -->
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{businesses[item]['image_url']}}" class="card-img-top">
+                        <a href='{{businesses[item]["url"]}}'><img src="{{businesses[item]['image_url']}}"
+                                    class="card-img-top"></a>
                         <!-- image can now be displayed on cards -->
                         <div class="card-body" style="background-color: crimson; color: white;">
                             <h5 class="card-title" style="text-align: center;">{{businesses[item].get("name")}}</h5>
