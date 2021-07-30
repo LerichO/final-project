@@ -13,24 +13,21 @@
 
     <div class="container-fluid">
         <h1 class="saves-text">Here Are Your Saved Services</h1>
-        <div id="saves-account" class="row" id="acc-directory">
-            <a href="/">Return to Main Page</a>
-        </div>
-        <div>
+    </div>
+            <div>
             <ul>
                 <div class="row">
                     {% for item in range(saves |length) %}
                     <!-- <li> -->
                     <!-- cards created by for loop -->
                     <div class="col">
-                        <div class="card" style="width: 18rem;">
+                        <div class="account-card" style="width: 18rem;">
                             <a href='{{saves[item]["url"]}}'><img src="{{saves[item]['image_url']}}"
                                     class="card-img-top"></a>
                             <!-- image can now be displayed on cards -->
                             <div class="card-body">
                                 <h5 class="card-title">{{saves[item]["name"]}}</h5>
-                                
-                                <h6 class="card-subtitle mb-2 text-muted">{{saves[item]["location"]["address1"]}},
+                                <h6 class="card-subtitle mb-2">{{saves[item]["location"]["address1"]}},
                                     {{saves[item]["location"]["city"]}}, {{saves[item]["location"]["state"]}}
                                 </h6>
                                 <p class="card-text">Review count: {{saves[item]["review_count"]}}</p>
@@ -45,11 +42,8 @@
 
             </ul>
         </div>
-
-    </div>
-
-    <div class="loader"></div>
-
-</body>
+    <div class ="account-button-div">
+<button class="account-buttons"  style="background-color: #b31b1b;"> <a href="/"  class="account-a" style="color: white;">Return to Main Page</a></button>
+</div></body>
 
 </html>

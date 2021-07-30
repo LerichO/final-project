@@ -45,7 +45,7 @@ def find_average_review_count(b_list_raw):
 
 # -- algorithm that can somewhat identify small businesses --
 # -- might need/want to include Yelp Program API --
-def small_business_sort(api_url, headers, location, b_list):
+def small_business_sort(api_url, headers, location, rating, b_list):
     processed = []
     score_list = []
     highest_review_count = find_highest_review_count(b_list)
@@ -66,7 +66,7 @@ def small_business_sort(api_url, headers, location, b_list):
         # print(score) # -- for debugging --
 
         # -- Step 2 --
-        score += int((b_list[x]["rating"] - 3) * 300)
+        score += int((b_list[x]["rating"] - rating) * 300)
 
         # -- Step 3. --
         if b_list[x].get("price", None) != None:
@@ -122,7 +122,7 @@ def small_business_sort(api_url, headers, location, b_list):
 
     return export
 
-def search(term, location, api_key):
+def search(term, location, rating,  api_key):
     global business_list
     headers = {'Authorization': 'Bearer {}'.format(api_key)}
     search_api_url = 'https://api.yelp.com/v3/businesses/search'
@@ -157,7 +157,7 @@ def search(term, location, api_key):
 
     exported_list = []
     # -- will eventually return a FINAL list of busiesses --
-    exported_list = small_business_sort(search_api_url, headers, location, response["businesses"])
+    exported_list = small_business_sort(search_api_url, headers, location, rating, response["businesses"])
     business_list = []
     for item in exported_list:
         business_list.append(item)

@@ -127,7 +127,7 @@ def save(business_id):
             value = {"$set": {"saves": user["saves"]}}
             users.update_one(query, value)
                 
-    return redirect("/results") 
+    return redirect("/account") 
 
 @app.route("/logout")
 def logout():
@@ -144,8 +144,9 @@ def results():
     gmapskey = app.config["GMAPS_KEY"]
     user_response_city = request.form["citystate"]
     user_response_service = request.form["service"]
+    user_response_rating = float(request.form["rating-range"])
     businesses = model.search(user_response_service,
-                              user_response_city, api_key)
+                              user_response_city, user_response_rating, api_key)
     final_list = businesses
     # -- ^^^^^less code used than referencing model.bussiness_list seperately
     # print(businesses) # enable wehen needed for debugging purposes --

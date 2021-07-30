@@ -15,15 +15,15 @@
             <h1 class="results-text">Here Are Your Results</h1>
         </div>
         <div id="results-account" class="row" id="acc-directory" style="top: -70px;">
-            <a class="account-text" href="/signup">Sign Up</a>
-            {% if session %}
-            <p class="account-text">Hi {{session['username']}}</p>
-            <a class="account-text" href="/logout">Log Out</a>
-            <a class="account-text" href="/account">Account</a>
-            {% else %}
-            <a class="account-text" href="/login">Log In</a>
-            <a class="account-text" href="/login">Account</a>
-            {% endif %}
+        {% if session %}
+            <a>Hi: {{session['username']}}</a>
+            <a  href="/logout">Log Out</a>
+            <a  href="/account">Account</a>
+        {% else %}
+            <a class = "account"href="/signup">Sign Up</a>
+            <a  href="/login">Log In</a>
+            <a  href="/login">Account</a>
+        {% endif %}
         </div>
     </div>
 

@@ -13,15 +13,16 @@
     <div class="container-fluid">
         <h1>Welcome to Small Services Finder!</h1>
     <div id ="account" class="row" id="acc-directory">
-        <a class = "account"href="/signup">Sign Up</a>
         {% if session %}
-            <p >Hi {{session['username']}}</p>
+            <a>Hi: {{session['username']}}</a>
             <a  href="/logout">Log Out</a>
             <a  href="/account">Account</a>
         {% else %}
+            <a class = "account"href="/signup">Sign Up</a>
             <a  href="/login">Log In</a>
             <a  href="/login">Account</a>
         {% endif %}
+
 
         
     </div>
@@ -49,7 +50,9 @@
         <input id ="submit"type="submit" value="Submit" style="margin-top: 20px;" />
         </div>
     </form>
-
+    <h2 style="text-align: center; margin-top: 5%;">Mission Statement</h2>
+    <h3 style="text-align: center; width: 70%; margin: auto;">We saw it as essential to give smaller businesses the engagement needed to grow in our modern markets. Due to Covid 19 pandemic,
+         there was an economic fallout and we both want to see these businesses recover and eventually reach greater heights than before the pandemic. </h3>
 </body>
 
 </html>
